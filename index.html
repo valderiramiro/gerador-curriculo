@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gerador de Currículo – Jovem Aprendiz</title>
+  <meta name="description" content="Monte seu currículo de Jovem Aprendiz nas normas da ABNT e baixe em Word ou PDF.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topo">
+    <div>
+      <h1>Gerador de Currículo</h1>
+      <p>Jovem Aprendiz · formatação ABNT · Word e PDF</p>
+    </div>
+    <div class="topo-acoes">
+      <button type="button" class="btn btn-sec" id="btn-exemplo">Preencher exemplo</button>
+      <button type="button" class="btn btn-sec" id="btn-limpar">Limpar</button>
+    </div>
+  </header>
+
+  <nav class="abas" aria-label="Alternar visualização">
+    <button type="button" class="aba ativa" data-alvo="form">Preencher</button>
+    <button type="button" class="aba" data-alvo="previa">Ver currículo</button>
+  </nav>
+
+  <main class="layout">
+    <form id="form" class="painel" autocomplete="off" novalidate>
+
+      <fieldset>
+        <legend><span class="num">1</span> Dados pessoais</legend>
+        <label>Nome completo *
+          <input name="nome" required placeholder="Ex.: Ana Clara Souza Lima">
+        </label>
+        <div class="linha">
+          <label>Idade
+            <input name="idade" type="number" min="14" max="24" placeholder="15">
+          </label>
+          <label class="grow">Cidade – UF *
+            <input name="cidade" required placeholder="Ex.: Cascavel – PR">
+          </label>
+        </div>
+        <div class="linha">
+          <label class="grow">Telefone / WhatsApp *
+            <input name="telefone" class="tel" inputmode="tel" required placeholder="(45) 99999-9999">
+          </label>
+          <label class="grow">Telefone para recados
+            <input name="recados" class="tel" inputmode="tel" placeholder="(45) 99999-9999">
+          </label>
+        </div>
+        <label>E-mail *
+          <input name="email" type="email" required placeholder="seunome@gmail.com">
+        </label>
+        <p class="dica">Use um e-mail com o seu nome. Evite apelidos.</p>
+      </fieldset>
+
+      <fieldset>
+        <legend><span class="num">2</span> Objetivo profissional</legend>
+        <label>Cargo ou vaga desejada
+          <input name="objetivo" list="lista-objetivos" placeholder="Jovem Aprendiz">
+        </label>
+        <datalist id="lista-objetivos">
+          <option value="Jovem Aprendiz">
+          <option value="Jovem Aprendiz – Auxiliar Administrativo">
+          <option value="Jovem Aprendiz – Atendimento ao Cliente">
+          <option value="Jovem Aprendiz – Auxiliar de Loja">
+          <option value="Jovem Aprendiz – Repositor">
+        </datalist>
+      </fieldset>
+
+      <fieldset>
+        <legend><span class="num">3</span> Formação</legend>
+        <div class="linha">
+          <label class="grow">Curso
+            <select name="curso">
+              <option>Ensino Médio</option>
+              <option>Ensino Fundamental</option>
+              <option>Ensino Médio Técnico</option>
+            </select>
+          </label>
+          <label class="grow">Situação
+            <select name="situacao">
+              <option>cursando</option>
+              <option>completo</option>
+            </select>
+          </label>
+        </div>
+        <label>Escola
+          <input name="escola" placeholder="Ex.: Colégio Estadual ...">
+        </label>
+        <div class="linha">
+          <label class="grow">Série / ano
+            <select name="serie">
+              <option value="">—</option>
+              <option>6º ano</option><option>7º ano</option><option>8º ano</option><option>9º ano</option>
+              <option>1º ano</option><option>2º ano</option><option>3º ano</option>
+            </select>
+          </label>
+          <label class="grow">Turno
+            <select name="turno">
+              <option value="">—</option>
+              <option>manhã</option><option>tarde</option><option>noite</option><option>integral</option>
+            </select>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend><span class="num">4</span> Experiência</legend>
+        <p class="dica">Primeiro emprego? Tudo bem. Coloque trabalhos informais, voluntariado ou ajuda em negócio da família. Se não tiver nada, deixe vazio que a seção some.</p>
+        <div id="experiencias"></div>
+        <button type="button" class="btn btn-add" id="add-exp">+ Adicionar experiência</button>
+      </fieldset>
+
+      <fieldset>
+        <legend><span class="num">5</span> Cursos complementares</legend>
+        <label>Um curso por linha
+          <textarea name="cursos" rows="3" placeholder="Informática Essencial – CEBRAC – 2025"></textarea>
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend><span class="num">6</span> Habilidades</legend>
+        <label>Uma por linha
+          <textarea name="habilidades" rows="4"></textarea>
+        </label>
+        <div class="chips" data-alvo="habilidades">
+          <button type="button">Comunicação</button>
+          <button type="button">Organização</button>
+          <button type="button">Trabalho em equipe</button>
+          <button type="button">Pontualidade</button>
+          <button type="button">Responsabilidade</button>
+          <button type="button">Proatividade</button>
+          <button type="button">Vontade de aprender</button>
+          <button type="button">Informática básica</button>
+          <button type="button">Atendimento ao público</button>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend><span class="num">7</span> Informações adicionais</legend>
+        <label>Uma por linha
+          <textarea name="adicionais" rows="3"></textarea>
+        </label>
+        <div class="chips" data-alvo="adicionais">
+          <button type="button">Disponibilidade no contraturno escolar</button>
+          <button type="button">Primeiro emprego</button>
+          <button type="button">Disponibilidade para cursos</button>
+          <button type="button">Fácil adaptação a novas ferramentas</button>
+        </div>
+      </fieldset>
+
+    </form>
+
+    <section class="previa-wrap" id="previa" aria-label="Pré-visualização do currículo">
+      <div class="folha-escala">
+        <article class="folha" id="folha"></article>
+      </div>
+    </section>
+  </main>
+
+  <div class="baixar">
+    <p class="aviso" id="aviso" role="status"></p>
+    <div class="baixar-botoes">
+      <button type="button" class="btn btn-pri" id="btn-word">Baixar Word (.docx)</button>
+      <button type="button" class="btn btn-pri" id="btn-pdf">Salvar PDF / Imprimir</button>
+    </div>
+  </div>
+
+  <footer class="rodape">
+    Seus dados ficam só no seu navegador. Nada é enviado para nenhum servidor.
+  </footer>
+
+  <template id="tpl-exp">
+    <div class="exp">
+      <div class="linha">
+        <label class="grow">Local / função
+          <input data-k="titulo" placeholder="Ex.: Loja da família – Atendente">
+        </label>
+        <label class="grow">Período
+          <input data-k="periodo" placeholder="Ex.: Jan/2025 – atual">
+        </label>
+      </div>
+      <label>Atividades (uma por linha)
+        <textarea data-k="atividades" rows="3" placeholder="Atendimento ao cliente&#10;Organização de produtos"></textarea>
+      </label>
+      <button type="button" class="btn-rem">Remover</button>
+    </div>
+  </template>
+
+  <script src="https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.umd.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

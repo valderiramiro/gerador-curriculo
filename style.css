@@ -1,0 +1,249 @@
+:root {
+  --bg: #f3f4f6;
+  --painel: #ffffff;
+  --texto: #1f2937;
+  --suave: #6b7280;
+  --borda: #d1d5db;
+  --pri: #1d4ed8;
+  --pri-hover: #1e40af;
+  --pri-claro: #dbeafe;
+  --erro: #b91c1c;
+  --raio: 10px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--texto);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+/* ---------- topo ---------- */
+.topo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: var(--pri);
+  color: #fff;
+}
+.topo h1 { margin: 0; font-size: 22px; }
+.topo p { margin: 2px 0 0; opacity: .85; font-size: 14px; }
+.topo-acoes { display: flex; gap: 8px; }
+.topo .btn-sec { background: rgba(255,255,255,.15); color: #fff; border-color: rgba(255,255,255,.4); }
+.topo .btn-sec:hover { background: rgba(255,255,255,.25); }
+
+/* ---------- layout ---------- */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(340px, 480px) 1fr;
+  gap: 24px;
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.abas { display: none; }
+
+.painel { display: flex; flex-direction: column; gap: 16px; }
+
+fieldset {
+  margin: 0;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  background: var(--painel);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+legend {
+  font-weight: 700;
+  padding: 0 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.num {
+  display: inline-grid;
+  place-items: center;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--pri);
+  color: #fff;
+  font-size: 12px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--suave);
+}
+input, select, textarea {
+  font: inherit;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--texto);
+  padding: 9px 10px;
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  background: #fff;
+  width: 100%;
+}
+input:focus, select:focus, textarea:focus {
+  outline: 2px solid var(--pri-claro);
+  border-color: var(--pri);
+}
+input.invalido { border-color: var(--erro); }
+textarea { resize: vertical; }
+
+.linha { display: flex; gap: 10px; flex-wrap: wrap; }
+.linha > label { flex: 1 1 120px; }
+.linha > .grow { flex: 2 1 160px; }
+
+.dica { margin: 0; font-size: 13px; color: var(--suave); }
+
+/* ---------- botões ---------- */
+.btn {
+  font: inherit;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 9px 14px;
+  border: 1px solid var(--borda);
+  background: #fff;
+  color: var(--texto);
+  cursor: pointer;
+}
+.btn-pri { background: var(--pri); border-color: var(--pri); color: #fff; }
+.btn-pri:hover { background: var(--pri-hover); }
+.btn-add { border-style: dashed; color: var(--pri); background: transparent; }
+.btn-add:hover { background: var(--pri-claro); }
+.btn-rem {
+  align-self: flex-end;
+  font: inherit; font-size: 13px;
+  background: none; border: none;
+  color: var(--erro); cursor: pointer;
+}
+
+.exp {
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 8px;
+  background: #fafafa;
+}
+
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chips button {
+  font: inherit; font-size: 13px;
+  border: 1px solid var(--borda);
+  background: #fff;
+  border-radius: 999px;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+.chips button:hover { border-color: var(--pri); color: var(--pri); }
+.chips button.usado { background: var(--pri-claro); border-color: var(--pri); color: var(--pri); }
+
+.baixar {
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
+  padding: 10px 16px;
+  background: var(--painel);
+  border-top: 1px solid var(--borda);
+  box-shadow: 0 -4px 16px rgba(0,0,0,.06);
+}
+.baixar-botoes { display: flex; gap: 10px; max-width: 640px; margin: 0 auto; }
+.baixar .btn { flex: 1; padding: 12px; }
+
+.aviso { margin: 0 auto 6px; max-width: 640px; color: var(--erro); font-weight: 600; font-size: 14px; }
+.aviso:empty { display: none; }
+
+/* ---------- folha A4 (pré-visualização) ---------- */
+.previa-wrap {
+  position: sticky;
+  top: 24px;
+  overflow: hidden;
+}
+.folha-escala { transform-origin: top left; }
+
+.folha {
+  width: 21cm;
+  min-height: 29.7cm;
+  padding: 3cm 2cm 2cm 3cm;   /* ABNT: sup 3, dir 2, inf 2, esq 3 */
+  background: #fff;
+  color: #000;
+  box-shadow: 0 4px 24px rgba(0,0,0,.12);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12pt;
+  line-height: 1.5;
+}
+.folha p { margin: 0; }
+.folha .nome { text-align: center; font-weight: 700; font-size: 14pt; }
+.folha .contato { text-align: center; }
+.folha h2 {
+  font-size: 12pt;
+  font-weight: 700;
+  margin: 1.5em 0 0;
+  text-transform: uppercase;
+}
+.folha h3 { font-size: 12pt; font-weight: 700; margin: 0; }
+.folha h3 + p, .folha h3 + ul { margin-top: 0; }
+.folha .bloco + .bloco { margin-top: .75em; }
+.folha ul { margin: 0; padding-left: 1.2cm; }
+.folha .vazio { color: #9ca3af; font-style: italic; }
+
+.rodape {
+  text-align: center;
+  font-size: 13px;
+  color: var(--suave);
+  padding: 8px 16px 24px;
+}
+
+/* ---------- celular ---------- */
+@media (max-width: 860px) {
+  .layout { grid-template-columns: 1fr; padding: 16px; }
+  .topo { padding: 14px 16px; }
+  .abas {
+    display: flex;
+    position: sticky; top: 0; z-index: 5;
+    background: var(--painel);
+    border-bottom: 1px solid var(--borda);
+  }
+  .aba {
+    flex: 1; font: inherit; font-weight: 600;
+    padding: 12px; border: none; background: none; cursor: pointer;
+    color: var(--suave); border-bottom: 3px solid transparent;
+  }
+  .aba.ativa { color: var(--pri); border-bottom-color: var(--pri); }
+  .layout[data-modo="form"] .previa-wrap,
+  .layout[data-modo="previa"] .painel { display: none; }
+  .previa-wrap { position: static; }
+}
+
+/* ---------- impressão / PDF ---------- */
+@page { size: A4; margin: 3cm 2cm 2cm 3cm; }
+
+@media print {
+  body { background: #fff; }
+  .topo, .abas, .painel, .rodape, .baixar { display: none !important; }
+  .layout { display: block; padding: 0; }
+  .previa-wrap { display: block !important; position: static; overflow: visible; }
+  .folha-escala { transform: none !important; height: auto !important; }
+  .folha { width: auto; min-height: 0; padding: 0; box-shadow: none; }
+  .folha .vazio { display: none; }
+}
