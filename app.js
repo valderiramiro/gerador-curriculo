@@ -12,11 +12,11 @@ const aviso = document.getElementById("aviso");
 
 const EXEMPLO = {
   nome: "Ana Clara Souza Lima",
-  idade: "15",
   cidade: "Cascavel – PR",
   telefone: "(45) 99999-0000",
   recados: "",
   email: "anaclara.lima@email.com",
+  linkedin: "linkedin.com/in/anaclara-lima",
   objetivo: "Jovem Aprendiz",
   curso: "Ensino Médio",
   situacao: "cursando",
@@ -48,6 +48,16 @@ function mascaraTel(v) {
   if (d.length <= 6) return `(${d.slice(0, 2)}) ${d.slice(2)}`;
   if (d.length <= 10) return `(${d.slice(0, 2)}) ${d.slice(2, 6)}-${d.slice(6)}`;
   return `(${d.slice(0, 2)}) ${d.slice(2, 7)}-${d.slice(7)}`;
+}
+
+// "https://www.linkedin.com/in/fulano/?utm=..." -> "linkedin.com/in/fulano"
+function limparLinkedin(v) {
+  return (v || "")
+    .trim()
+    .replace(/^https?:\/\//i, "")
+    .replace(/^(www\.|br\.|[a-z]{2}\.)(?=linkedin\.com)/i, "")
+    .replace(/[?#].*$/, "")
+    .replace(/\/+$/, "");
 }
 
 function nomeArquivo(d) {
@@ -96,6 +106,7 @@ function montar(d) {
     d.telefone,
     d.recados && `${d.recados} (recados)`,
     d.email,
+    limparLinkedin(d.linkedin),
     d.idade && `${d.idade} anos`,
   ].filter(Boolean);
 
@@ -200,6 +211,11 @@ function validar() {
   if (tel && tel.length < 10) {
     form.elements.telefone.classList.add("invalido");
     faltando.push("Telefone (está faltando dígito)");
+  }
+  const li = limparLinkedin(form.elements.linkedin.value);
+  if (li && !/^linkedin\.com\/in\/[^/]+$/i.test(li)) {
+    form.elements.linkedin.classList.add("invalido");
+    faltando.push("LinkedIn (cole o link do perfil, ex.: linkedin.com/in/seunome)");
   }
   aviso.textContent = faltando.length ? "Confira: " + faltando.join(", ") : "";
   if (faltando.length) {
