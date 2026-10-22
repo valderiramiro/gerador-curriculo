@@ -1,4 +1,6 @@
-# Gerador de Currículo – Jovem Aprendiz
+# Gerador de Currículo – CEBRAC
+
+© 2026 **Prof. Valderi Ramos** · CEBRAC – Todos os direitos reservados.
 
 Site para alunos montarem um currículo simples de **Jovem Aprendiz**, nas normas da ABNT, e baixarem em **Word (.docx)** ou **PDF**.
 
@@ -14,7 +16,8 @@ Não precisa instalar nada: abre no navegador, no computador ou no celular.
 - Máscara de telefone e aviso de campos obrigatórios ou incompletos
 - Rascunho salvo automaticamente no navegador
 - Botão **Preencher exemplo** para mostrar em sala de aula
-- **Privacidade:** os dados do aluno ficam só no navegador dele. Nada é enviado para servidor.
+- Contador público de currículos gerados, no topo do site. Usa o serviço gratuito [Abacus](https://abacus.jasoncameron.dev) e conta cada clique em Word ou PDF. Ao abrir o site no próprio computador (localhost), ele usa um contador de teste separado.
+- **Privacidade:** os dados do aluno ficam só no navegador dele. O contador envia apenas "+1", sem nenhuma informação pessoal.
 
 ## Formatação ABNT aplicada
 

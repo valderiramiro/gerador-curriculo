@@ -12,7 +12,7 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_LINE_SPACING
 # ===== DADOS DO ALUNO =====
 DADOS = {
     "nome": "NOME COMPLETO DO ALUNO",
-    "contato": "Cidade – UF | (00) 00000-0000 | email@exemplo.com | 15 anos",
+    "contato": "Cidade – UF | (00) 00000-0000 | email@exemplo.com",
     "objetivo": "Jovem Aprendiz",
     # cada item: (título, período, [atividades])
     "experiencia": [

@@ -1,4 +1,5 @@
-// Gerador de Currículo – Jovem Aprendiz
+// Gerador de Currículo – CEBRAC
+// © 2026 Prof. Valderi Ramos · CEBRAC – Todos os direitos reservados
 // Tudo roda no navegador: o rascunho fica no localStorage e nada é enviado.
 
 const CHAVE = "curriculo-jovem-aprendiz";
@@ -272,7 +273,7 @@ async function baixarWord() {
   if (c.adicionais.length) corpo.push(...titulo("Informações adicionais"), ...itens(c.adicionais));
 
   const doc = new Document({
-    creator: "Gerador de Currículo – Jovem Aprendiz",
+    creator: "Gerador de Currículo – CEBRAC",
     title: "Currículo – " + c.nome,
     styles: {
       default: {
@@ -303,6 +304,32 @@ async function baixarWord() {
   a.click();
   a.remove();
   setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  contador("hit");
+}
+
+// ---------- contador de currículos gerados ----------
+// Serviço gratuito Abacus (abacus.jasoncameron.dev). Só envia "+1", nenhum dado do aluno.
+// Rodando no próprio computador (localhost), usa um contador de teste separado.
+
+const CONTADOR = {
+  api: "https://abacus.jasoncameron.dev",
+  namespace: "gerador-curriculo-jovem-aprendiz-8d1f",
+  chave: /^(localhost|127\.0\.0\.1)$/.test(location.hostname) ? "teste" : "curriculos",
+};
+const elContador = document.getElementById("contador");
+
+function mostrarContador(n) {
+  if (typeof n !== "number") return;
+  elContador.textContent = `${n.toLocaleString("pt-BR")} ${n === 1 ? "currículo gerado" : "currículos gerados"}`;
+  elContador.hidden = false;
+}
+
+async function contador(acao) {
+  try {
+    const r = await fetch(`${CONTADOR.api}/${acao}/${CONTADOR.namespace}/${CONTADOR.chave}`);
+    if (r.status === 404) return mostrarContador(0); // ainda ninguém gerou
+    if (r.ok) mostrarContador((await r.json()).value);
+  } catch {} // sem internet ou serviço fora do ar: o contador só não aparece
 }
 
 // ---------- PDF (impressão do navegador) ----------
@@ -313,6 +340,7 @@ function salvarPdf() {
   document.title = nomeArquivo(lerDados()); // vira o nome sugerido do PDF
   window.print();
   document.title = tituloOriginal;
+  contador("hit");
 }
 
 // ---------- rascunho ----------
@@ -380,3 +408,4 @@ const rascunho = lerRascunho();
 if (rascunho) preencher(rascunho);
 else form.elements.habilidades.value = "Vontade de aprender";
 atualizar();
+contador("get");

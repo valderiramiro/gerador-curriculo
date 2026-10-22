@@ -35,6 +35,17 @@ body {
 }
 .topo h1 { margin: 0; font-size: 22px; }
 .topo p { margin: 2px 0 0; opacity: .85; font-size: 14px; }
+.topo .contador {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.18);
+  font-size: 13px;
+  font-weight: 600;
+  opacity: 1;
+}
+.topo .contador[hidden] { display: none; }
 .topo-acoes { display: flex; gap: 8px; }
 .topo .btn-sec { background: rgba(255,255,255,.15); color: #fff; border-color: rgba(255,255,255,.4); }
 .topo .btn-sec:hover { background: rgba(255,255,255,.25); }
@@ -213,6 +224,9 @@ textarea { resize: vertical; }
   color: var(--suave);
   padding: 8px 16px 24px;
 }
+.rodape p { margin: 4px 0; }
+.rodape .assinatura { font-size: 14px; color: var(--texto); }
+.rodape .assinatura strong { color: var(--pri); }
 
 /* ---------- celular ---------- */
 @media (max-width: 860px) {

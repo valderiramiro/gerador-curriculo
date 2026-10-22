@@ -3,15 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Gerador de Currículo – Jovem Aprendiz</title>
+  <title>Gerador de Currículo – CEBRAC</title>
   <meta name="description" content="Monte seu currículo de Jovem Aprendiz nas normas da ABNT e baixe em Word ou PDF.">
+  <meta name="author" content="Prof. Valderi Ramos">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="topo">
     <div>
-      <h1>Gerador de Currículo</h1>
+      <h1>Gerador de Currículo – CEBRAC</h1>
       <p>Jovem Aprendiz · formatação ABNT · Word e PDF</p>
+      <p class="contador" id="contador" hidden></p>
     </div>
     <div class="topo-acoes">
       <button type="button" class="btn btn-sec" id="btn-exemplo">Preencher exemplo</button>
@@ -171,7 +173,8 @@
   </div>
 
   <footer class="rodape">
-    Seus dados ficam só no seu navegador. Nada é enviado para nenhum servidor.
+    <p class="assinatura">© 2026 <strong>Prof. Valderi Ramos</strong> · CEBRAC – Todos os direitos reservados</p>
+    <p>Seus dados ficam só no seu navegador. O site conta apenas quantos currículos foram gerados, sem nenhum dado pessoal.</p>
   </footer>
 
   <template id="tpl-exp">
